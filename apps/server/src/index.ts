@@ -20,11 +20,17 @@ app.use(
 
 app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw));
 
-// API routes
 app.route("/api/v1/runs", runsRoutes);
 
 app.get("/", (c) => {
   return c.text("HEALOSBENCH API Server");
 });
 
-export default app;
+const port = Number(process.env.PORT) || 3000;
+
+console.log("Starting server on port:", port);
+
+Bun.serve({
+  port,
+  fetch: app.fetch,
+});
