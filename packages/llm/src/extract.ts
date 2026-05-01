@@ -1,4 +1,6 @@
-import Ajv from 'ajv';
+import Ajv2020 from "ajv/dist/2020";
+
+
 import { readFileSync } from 'fs';
 import { anthropic, EXTRACT_TOOL } from './index';
 import { getStrategyModule } from './utils';
@@ -7,7 +9,11 @@ import type { ExtractionResult, PromptStrategy, LLMTrace, LLMAttempt } from '@te
 const schema = JSON.parse(
   readFileSync(new URL('../../../../data/schema.json', import.meta.url), 'utf-8')
 );
-const ajv = new Ajv();
+
+const ajv = new Ajv2020({
+  allErrors: true,
+  strict: false,
+});
 const validateSchema = ajv.compile(schema);
 
 interface ExtractResult {
