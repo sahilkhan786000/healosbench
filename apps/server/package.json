@@ -10,11 +10,15 @@
     "start": "bun run dist/index.mjs"
   },
   "dependencies": {
-    "@test-evals/auth": "workspace:*",
     "@test-evals/db": "workspace:*",
     "@test-evals/env": "workspace:*",
+    "@test-evals/llm": "workspace:*",
+    "@test-evals/shared": "workspace:*",
+    "@test-evals/auth": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.1",
+    "fuzzball": "^2.1.2",
     "hono": "^4.8.2",
     "zod": "catalog:"
   },
